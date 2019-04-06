@@ -19,15 +19,23 @@ import com.javaworld.sample.service.HelloService;
 public class Activator implements BundleActivator
 {
 
-	ServiceReference helloServiceReference;
+	// ServiceReference helloServiceReference;
+	HelloServiceTracker helloServiceTracker;
 	
 	public void start(BundleContext context) throws Exception {
-
+		
+		System.out.println("Hello World!!!");
 		// obtem a refererencia do servico fornecido
-		helloServiceReference = context.getServiceReference(HelloService.class.getName());
+		// helloServiceReference = context.getServiceReference(HelloService.class.getName());
 		
 		// obtem o servico atraves da referencia
-		HelloService hs = (HelloService) context.getService(helloServiceReference);
+		// HelloService hs = (HelloService) context.getService(helloServiceReference);
+		
+		helloServiceTracker = new HelloServiceTracker(context); // create a new HelloServiceTracker object
+		helloServiceTracker.open(); // start to track services.
+		
+		HelloService hs = (HelloService) helloServiceTracker.getService(); // ask to HelloServiceTracker to get the service 
+		                                                                   // instead of ask to the context
 		
 		// Executa o servico
 		System.out.println("Enter username: ");
@@ -50,7 +58,9 @@ public class Activator implements BundleActivator
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		context.ungetService(helloServiceReference);
+		//context.ungetService(helloServiceReference);
+		helloServiceTracker.close();
+		
 		System.out.println("Goodbye Cruel World");
 	}
 	

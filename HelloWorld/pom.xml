@@ -30,7 +30,6 @@
   					<Bundle-Category>HelloWorld</Bundle-Category>
   					<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
   					<Bundle-Activator>com.javaworld.sample.HelloWorld.Activator</Bundle-Activator>
-  					<!--<Export-Package>com.datacollector.ipleiria.datacollector.api</Export-Package>-->
   				</instructions>
   				<remoteOBR>repo-rel</remoteOBR>
   				<prefixUrl>file:///home/emerson/Projects/eclipse/releases</prefixUrl>
@@ -72,6 +71,12 @@
     	<artifactId>com.javaworld.sample.service</artifactId>
     	<version>0.1.1</version>
     	<type>bundle</type>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.osgi</groupId>
+    	<artifactId>org.osgi.util.tracker</artifactId>
+    	<version>1.5.2</version>
     </dependency>
   </dependencies>
   

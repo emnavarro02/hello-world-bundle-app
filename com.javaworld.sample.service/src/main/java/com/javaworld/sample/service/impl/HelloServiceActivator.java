@@ -41,9 +41,11 @@ public class HelloServiceActivator implements BundleActivator {
 		 *        service that it is interested in.
 		*/
 		
-		HelloService helloService = new HelloServiceImpl();   
+		// HelloService helloService = new HelloServiceImpl();   
+		// helloServiceRegistration = context.registerService(HelloService.class.getName(), helloService, null);  
 		
-		helloServiceRegistration = context.registerService(HelloService.class.getName(), helloService, null);  
+		HelloServiceFactory helloServiceFactory = new HelloServiceFactory();
+		helloServiceRegistration = context.registerService(HelloService.class.getName(), helloServiceFactory, null);
 	}
 
 	@Override
