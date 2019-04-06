@@ -10,7 +10,7 @@ import org.osgi.framework.ServiceRegistration;
 import com.javaworld.sample.service.HelloService;
 
 /**
- * @author emerson
+ * @author Emerson Navarro
  *
  */
 public class HelloServiceActivator implements BundleActivator {
@@ -20,8 +20,10 @@ public class HelloServiceActivator implements BundleActivator {
 	@Override
 	public void start(BundleContext context) throws Exception {
 			
+		System.out.println("Starting the service " + HelloService.class.getName());	
+		
 		/**
-		 * The register service method needs:
+		 * The "registerService()" method needs:
 		 * 1) The name of the interface under which you want to register the service 
 		 *    -- If you want to register the service under multiple interfaces then 
 		 *       you should create a String[] of interface names and pass it as the
@@ -39,13 +41,9 @@ public class HelloServiceActivator implements BundleActivator {
 		 *        service that it is interested in.
 		*/
 		
-		HelloService helloService = new HelloServiceImpl();
+		HelloService helloService = new HelloServiceImpl();   
 		
-		System.out.println(HelloService.class.getName());
-		
-		helloServiceRegistration = context.registerService(HelloService.class.getName(), helloService, null);
-	
-
+		helloServiceRegistration = context.registerService(HelloService.class.getName(), helloService, null);  
 	}
 
 	@Override

@@ -9,8 +9,8 @@
   <packaging>bundle</packaging>
   
 
-  <name>HelloWorld</name>
-  <description>Simple Hello World</description>
+  <name>Hello World</name>
+  <description>Hello World</description>
   
   
   <properties>
@@ -70,7 +70,7 @@
     <dependency>
     	<groupId>com.javaworld.sample</groupId>
     	<artifactId>com.javaworld.sample.service</artifactId>
-    	<version>0.0.1</version>
+    	<version>0.1.1</version>
     	<type>bundle</type>
     </dependency>
   </dependencies>

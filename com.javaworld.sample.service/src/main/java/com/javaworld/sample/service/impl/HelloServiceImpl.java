@@ -10,10 +10,23 @@ import com.javaworld.sample.service.HelloService;
  *
  */
 public class HelloServiceImpl implements HelloService {
-	
-	public String sayHello() {
-		System.out.println("Inside the HelloServiceImpl class");
-		return "You say goodbye, I say hello...";
+
+	@Override
+	public String sayHello(String name) {
+		
+		if (name.length() > 0) {
+			System.out.println(".");
+			return ("Hi, " + name);	
+		}
+		else {
+			System.out.println("..");
+			return ("Hi, unamed");
+		}
+	}
+
+	@Override
+	public int somaValores(int a, int b) {
+		return a + b;
 	}
 
 }

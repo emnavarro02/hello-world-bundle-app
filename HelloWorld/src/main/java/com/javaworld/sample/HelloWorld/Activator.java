@@ -1,5 +1,7 @@
 package com.javaworld.sample.HelloWorld;
 
+import java.util.Scanner;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -20,9 +22,7 @@ public class Activator implements BundleActivator
 	ServiceReference helloServiceReference;
 	
 	public void start(BundleContext context) throws Exception {
-		
-		System.out.println("123...");
-		
+
 		// obtem a refererencia do servico fornecido
 		helloServiceReference = context.getServiceReference(HelloService.class.getName());
 		
@@ -30,12 +30,28 @@ public class Activator implements BundleActivator
 		HelloService hs = (HelloService) context.getService(helloServiceReference);
 		
 		// Executa o servico
-		System.out.println(hs.sayHello());
+		System.out.println("Enter username: ");
+		Scanner myObj = new Scanner(System.in);
+		String userName = myObj.nextLine();
+		String hello = hs.sayHello(userName);
+		System.out.println(hello);
+		
+		System.out.println("Enter values: ");
+		int a = myObj.nextInt();
+		int b = myObj.nextInt();
+	
+		int c = hs.somaValores(a, b);
+		System.out.print("The value is: ");
+		System.out.println(c);
+		
+		myObj.close();
+		
+		
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Goodbye Cruel World");
 		context.ungetService(helloServiceReference);
+		System.out.println("Goodbye Cruel World");
 	}
 	
 	
